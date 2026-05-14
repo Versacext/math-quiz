@@ -9,10 +9,16 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="desktop-view"> <div class="app-container">
+<body class="desktop-view">
+    <audio id="bg-audio" loop preload="auto">
+        <source src="bg-music.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="app-container">
         <header class="main-header">
             <div class="info-group">
-                <button id="view-toggle" class="mode-btn">📱/💻 Сменить вид</button>
+                <button id="view-toggle" class="mode-btn">📱/💻 Вид</button>
+                <button id="music-toggle" class="mode-btn">🎶 Музыка: Вкл</button>
                 <div class="stats-text">Вопрос <span id="q-idx">1</span>/<span id="q-total">0</span></div>
             </div>
             <div class="action-group">
@@ -39,7 +45,6 @@
 
                 <div class="nav-bar">
                     <button id="prev-btn" class="nav-btn">←</button>
-                    <button id="finish-btn" class="finish-btn hidden">Завершить</button>
                     <button id="next-btn" class="nav-btn">→</button>
                 </div>
             </main>

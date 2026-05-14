@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MathPro Ultra</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="desktop-view"> <div class="app-container">
+        <header class="main-header">
+            <div class="info-group">
+                <button id="view-toggle" class="mode-btn">📱/💻 Сменить вид</button>
+                <div class="stats-text">Вопрос <span id="q-idx">1</span>/<span id="q-total">0</span></div>
+            </div>
+            <div class="action-group">
+                <label class="switch-container">
+                    <span>Экзамен</span>
+                    <input type="checkbox" id="mode-toggle">
+                    <span class="slider"></span>
+                </label>
+                <button id="reset-btn" class="reset-btn">↻</button>
+            </div>
+        </header>
+
+        <div class="layout">
+            <main class="quiz-area">
+                <div class="card">
+                    <div id="question-text" class="math-text"></div>
+                    <div id="options-box" class="options-grid"></div>
+                    
+                    <div class="hint-section">
+                        <button id="hint-btn" class="hint-trigger">💡 Намек</button>
+                        <div id="hint-content" class="hint-card hidden"></div>
+                    </div>
+                </div>
+
+                <div class="nav-bar">
+                    <button id="prev-btn" class="nav-btn">←</button>
+                    <button id="finish-btn" class="finish-btn hidden">Завершить</button>
+                    <button id="next-btn" class="nav-btn">→</button>
+                </div>
+            </main>
+
+            <aside class="sidebar">
+                <div class="sidebar-title">Навигация</div>
+                <div id="questions-grid" class="q-grid"></div>
+            </aside>
+        </div>
+    </div>
+    <script src="questions.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -13,13 +13,15 @@ const UI = {
     qTotal: document.getElementById('q-total'),
     viewBtn: document.getElementById('view-toggle'),
     musicBtn: document.getElementById('music-toggle'),
+    hintBtn: document.getElementById('hint-btn'),
+    hintContent: document.getElementById('hint-content'),
     audio: document.getElementById('bg-audio')
 };
 
 let isPlaying = false;
 
 function init() {
-    const saved = localStorage.getItem('math_pro_final');
+    const saved = localStorage.getItem('math_pro_v11');
     if (saved) state = JSON.parse(saved);
 
     UI.qTotal.textContent = quizData.length;
@@ -31,17 +33,15 @@ function init() {
 }
 
 function setupEvents() {
-    // Переключатель Вида
     UI.viewBtn.onclick = () => {
         state.viewMode = (state.viewMode === 'desktop') ? 'mobile' : 'desktop';
         document.body.className = state.viewMode + '-view';
         save();
     };
 
-    // Музыка (28:34)
     UI.musicBtn.onclick = () => {
         if (!isPlaying) {
-            UI.audio.play().catch(() => alert("Нажми на экран, чтобы звук разрешился"));
+            UI.audio.play().catch(() => alert("Нажми на экран для активации звука"));
             UI.musicBtn.textContent = "🎶 Музыка: Вкл";
             UI.musicBtn.style.background = "#10b981";
         } else {
@@ -52,10 +52,15 @@ function setupEvents() {
         isPlaying = !isPlaying;
     };
 
+    // Логика кнопки подсказки
+    UI.hintBtn.onclick = () => {
+        UI.hintContent.classList.toggle('hidden');
+    };
+
     document.getElementById('next-btn').onclick = () => move(1);
     document.getElementById('prev-btn').onclick = () => move(-1);
     document.getElementById('mode-toggle').onchange = (e) => { state.isExam = e.target.checked; save(); render(); };
-    document.getElementById('reset-btn').onclick = () => { if(confirm('Сбросить всё?')) { state.answers = {}; state.idx = 0; save(); render(); }};
+    document.getElementById('reset-btn').onclick = () => { if(confirm('Сбросить весь прогресс?')) { state.answers = {}; state.idx = 0; save(); render(); }};
 }
 
 function move(dir) {
@@ -71,6 +76,10 @@ function render() {
     UI.qIdx.textContent = state.idx + 1;
     UI.qText.innerHTML = q.question;
     UI.options.innerHTML = '';
+    
+    // Сброс и заполнение подсказки
+    UI.hintContent.classList.add('hidden');
+    UI.hintContent.innerHTML = q.hint || "Совет: внимательно проверьте свойства функций или используйте метод исключения.";
 
     const userAns = state.answers[state.idx];
 
@@ -95,7 +104,7 @@ function render() {
             save();
             render();
 
-            // ПЕРЕХОД ЧЕРЕЗ 1 СЕКУНДУ
+            // АВТОПЕРЕХОД 1 СЕКУНДА
             setTimeout(() => {
                 if (state.idx < quizData.length - 1) move(1);
             }, 1000);
@@ -122,6 +131,6 @@ function renderGrid() {
     });
 }
 
-function save() { localStorage.setItem('math_pro_final', JSON.stringify(state)); }
+function save() { localStorage.setItem('math_pro_v11', JSON.stringify(state)); }
 
 init();

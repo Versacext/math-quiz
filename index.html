@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>MathPro Ultra</title>
+    <title>MathPro Ultra + Hints</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
@@ -23,8 +23,8 @@
             </div>
             <div class="action-group">
                 <label class="switch-container">
-                    <span>Экзамен</span>
                     <input type="checkbox" id="mode-toggle">
+                    <span class="slider-label">Экзамен</span>
                 </label>
                 <button id="reset-btn" class="reset-btn">↻</button>
             </div>
@@ -35,6 +35,11 @@
                 <div class="card">
                     <div id="question-text" class="math-text"></div>
                     <div id="options-box" class="options-grid"></div>
+                    
+                    <div class="hint-wrapper">
+                        <button id="hint-btn" class="hint-trigger">💡 Нужна помощь?</button>
+                        <div id="hint-content" class="hint-card hidden"></div>
+                    </div>
                 </div>
 
                 <div class="nav-bar">
@@ -44,7 +49,7 @@
             </main>
 
             <aside class="sidebar">
-                <div class="sidebar-title">Навигация</div>
+                <div class="sidebar-title">Прогресс</div>
                 <div id="questions-grid" class="q-grid"></div>
             </aside>
         </div>

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="desktop-view">
-    <audio id="bg-audio" loop preload="auto">
+    <audio id="bg-audio" loop preload="none">
         <source src="bg-music.mp3" type="audio/mpeg">
     </audio>
 
@@ -18,14 +18,13 @@
         <header class="main-header">
             <div class="info-group">
                 <button id="view-toggle" class="mode-btn">📱/💻 Вид</button>
-                <button id="music-toggle" class="mode-btn">🎶 Музыка: Вкл</button>
+                <button id="music-toggle" class="mode-btn">🎵 Музыка: Выкл</button>
                 <div class="stats-text">Вопрос <span id="q-idx">1</span>/<span id="q-total">0</span></div>
             </div>
             <div class="action-group">
                 <label class="switch-container">
                     <span>Экзамен</span>
                     <input type="checkbox" id="mode-toggle">
-                    <span class="slider"></span>
                 </label>
                 <button id="reset-btn" class="reset-btn">↻</button>
             </div>
@@ -36,11 +35,6 @@
                 <div class="card">
                     <div id="question-text" class="math-text"></div>
                     <div id="options-box" class="options-grid"></div>
-                    
-                    <div class="hint-section">
-                        <button id="hint-btn" class="hint-trigger">💡 Намек</button>
-                        <div id="hint-content" class="hint-card hidden"></div>
-                    </div>
                 </div>
 
                 <div class="nav-bar">
